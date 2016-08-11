@@ -1,0 +1,42 @@
+<%= form_for(@entrada) do |f| %>
+  <% if @entrada.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entrada.errors.count, "error") %> prohibited this entrada from being saved:</h2>
+
+      <ul>
+      <% @entrada.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :producto_id %><br>
+    <%= collection_select(:entrada, :product_id, @products, :id, :nombre, prompt: true) %>
+
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :Cantidad %><br>
+    <%= f.number_field :existencia %>
+  </div>
+  <div class="field">
+    <%= f.label :precio_compra %><br>
+    <%= f.text_field :precio_compra %>
+  </div>
+  <div class="field">
+    <%= f.label :precio_venta %><br>
+    <%= f.text_field :precio_venta %>
+  </div>
+  <div class="field">
+    <%= f.label :proveedor_id %><br>
+    <%= f.number_field :proveedor_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

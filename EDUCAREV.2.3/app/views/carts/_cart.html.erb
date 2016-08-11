@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %>
+
+<table class="table table-condensed">
+  <%= render(cart.line_items) %>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr bgcolor="#a9a9a9">
+    <td colspan="2">Total</td>
+    <td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
+  </tr>
+<tr><td></td></tr>
+<tr><td></td></tr>
+<tr><td></td></tr>
+<tr><td></td></tr>
+<tfoot>
+  <td align="left"><%= button_to 'Comprar', new_pedido_path, method: :get, :class => 'btn btn-info' %></td>
+  <td align="right"><%= button_to 'Vaciar Carrito', cart, method: :delete, :class => 'btn btn-success', data: { confirm: 'Estas seguro?' } %></td>
+</tfoot>
+</table>
+
+

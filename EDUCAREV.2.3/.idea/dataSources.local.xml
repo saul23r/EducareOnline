@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails EDUCAREV.2.3: development" uuid="5b771f1e-7c82-4d84-9edd-7f65917ff2aa">
+      <user-name>postgres</user-name>
+      <user-password>dfc4dfc3dfc4dfc0dfcb</user-password>
+      <schema-pattern>educare.pg_catalog educare.public</schema-pattern>
+      <default-schemas>educare.public</default-schemas>
+    </data-source>
+  </component>
+</project>

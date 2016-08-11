@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+  <title>Clean Slider jQuery Plugin</title>
+  <meta content="" name="description" />
+
+<body>
+<script>
+  $(document).ready(function(){
+    var config={};
+    config.width =1000;  //pixels
+    config.height=450;  //pixels
+    config.intervalTime  =7000; //mili-seconds
+    $('.slider').cleanSlider(config);
+  })
+</script>
+
+<style>
+
+  body{
+
+  }
+
+</style>
+
+
+
+<div class="container ">
+  <div class="header">
+    <h1>
+      Libreria<span style="color:#7ADEFE">EDUCARE</span>
+    </h1>
+<br>
+<br>
+  </div>
+  <div class="slider">
+    <ul>
+      <li><a rel="no-follow" target="blank_" title="EDUCARE ONLINE... Ven y Conocenos "><img src="<%= asset_path 'educ1.jpg' %>" /></a></li>
+      <li><a rel="no-follow" target="blank_" title="Aventurate en el maravilloso Mundo de la Lectura"><img src="<%= asset_path 'educ7.jpg' %>" /></a></li>
+      <li><a rel="no-follow" target="blank_"  title="“La lectura es a la mente lo que el ejercicio al cuerpo Joseph Addison "><img src="<%= asset_path 'educ3.jpg' %>" /></a></li>
+      <li><a rel="no-follow" target="blank_"  title="Ven y Conoce los mejores libros"><img src="<%= asset_path 'educ4.jpg' %>" /></a></li>
+      <li><a rel="no-follow" target="blank_"  title=" “El libro es fuerza, es valor, es fuerza, es alimento; antorcha del pensamiento y manantial del amor" ><img src="<%= asset_path 'educ5.jpg' %>" /></a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

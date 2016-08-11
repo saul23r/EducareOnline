@@ -1,0 +1,19 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+  pool: 5
+
+development:
+  <<: *default
+  database: educare
+
+  username: postgres
+
+  password: ninja
+
+  host: localhost
+
+  port: 5433
+

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align="center">Todos los Pedidos</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Dirección</th>
+      <th>Correo Electrónico</th>
+      <th>Tipo de Pago</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pedidos.each do |pedido| %>
+      <tr>
+        <td><%= pedido.name %></td>
+        <td><%= pedido.address %></td>
+        <td><%= pedido.email %></td>
+        <td><%= pedido.pay_type %></td>
+        <td><%= link_to 'Show', pedido %></td>
+        <td><%= link_to 'Edit', edit_pedido_path(pedido) %></td>
+        <td><%= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Pedido', new_pedido_path %>

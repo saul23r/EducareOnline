@@ -1,0 +1,25 @@
+<script>
+  function mostrar(dato){
+    if(dato=="1"){
+      document.getElementById("libro").style.display = "block";
+      document.getElementById("resto").style.display = "block";
+      document.getElementById("name").style.display = "block";
+      document.getElementById("buton").style.display = "block";
+      document.getElementById("didactico").style.display = "none";
+    }
+    if(dato=="2"){
+      document.getElementById("libro").style.display = "none";
+      document.getElementById("didacticos").style.display = "block";
+      document.getElementById("resto").style.display = "block";
+      document.getElementById("name").style.display = "block";
+      document.getElementById("buton").style.display = "block";
+    }
+  }
+</script>
+
+    <%= render 'form' %>
+
+    <%= link_to 'Back', products_path, :class=>"btn btn-link" %>
+
+  </div>
+  </div>

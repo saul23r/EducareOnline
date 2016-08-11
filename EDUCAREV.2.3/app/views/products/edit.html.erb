@@ -1,0 +1,136 @@
+<%= render "layouts/nav_admin" %>
+<p id="notice"><%= notice %></p>
+<div class="col-sm-3 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="row">
+    <div class="container">
+
+
+      <div class="row">
+        <div class="col-sm-9 col-sm-offset-1">
+          <div class="jumbotron">
+            <div class="row">
+              <div class="col-md-5 col-md-offset-3">
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Editar Producto</h3>
+                  </div>
+                </div>
+
+                <%= form_for(@product) do |f| %>
+                    <% if @product.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+                          <ul>
+                            <% @product.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                    <% end %>
+
+                    <div class="form-group">
+
+                      <%= f.hidden_field :tipo, :id => "tipo" %>
+                    </div>
+
+
+                    <div class="form-group">
+                      <%= f.label :nombre %><br>
+                      <%= f.text_field :nombre, :class=>"form-control" %>
+                    </div>
+
+
+                    <% if @product.tipo == 0 %>
+
+                        <div class="form-group">
+                        <%= f.label :author_libro %><br>
+                        <%= f.text_field :author_libro, class:"form-control cbok" %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :editorial_id, "Editorial" %><br>
+                        <%= collection_select(:product,  :editorial_id, @editorials, :id , :editorial_name, {prompt: "Seleccione una editorial"  },{class: "selectpicker show-menu-arrow show-tick"})%>  </div>
+
+                        <div class="form-group">
+                        <%= f.label :genero_id, "Genero" %><br>
+                        <%= collection_select(:product, :genero_id, @generos, :id, :genero_name, {:prompt => 'Selecciona el genero' },{class: "selectpicker show-menu-arrow show-tick"}) %>
+                        </div>
+
+                        <div class="form-group">
+                          <%= f.label :proveedor_id, "Proveedor" %><br>
+                          <%= collection_select(:product, :proveedor_id, @proveedors, :id, :nombre, {:prompt => 'Selecciona el proveedor' },{class: "selectpicker show-menu-arrow show-tick"}) %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :imagen %><br>
+                          <%= f.text_field :imagen, class:"form-control" %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :cantidad %><br>
+                          <%= f.number_field :cantidad, class:"form-control" %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :descripcion %><br>
+                          <%= f.text_area :descripcion, class:"form-control", rows: 10, cols: 60  %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :precio %><br>
+                          <%= f.text_field :precio ,  class:"form-control" %>
+                        </div>
+
+                    <%else%>
+
+                        <div class="form-group">
+                          <%= f.label :marca_id, "Marca" %><br>
+                          <%= collection_select(:product, :marca_id, @marcas, :id, :marca_name, {:prompt => 'Selecciona la marca' }, {class: "selectpicker show-menu-arrow show-tick"}) %></div>
+
+
+                        <div class="form-group">
+                          <%= f.label :proveedor_id, "Proveedor" %><br>
+                          <%= collection_select(:product, :proveedor_id, @proveedors, :id, :nombre, {:prompt => 'Selecciona el proveedor' },{class: "selectpicker show-menu-arrow show-tick"}) %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :imagen %><br>
+                          <%= f.text_field :imagen, class:"form-control" %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :cantidad %><br>
+                          <%= f.number_field :cantidad, class:"form-control" %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :descripcion %><br>
+                          <%= f.text_area :descripcion, class:"form-control", rows: 10, cols: 60  %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.label :precio %><br>
+                          <%= f.text_field :precio ,  class:"form-control" %>
+                        </div>
+
+
+                       <%end%>
+
+                    <div class=" form-group" >
+                      <%= f.submit 'Guardar Producto', :class=> "btn btn-success" %>
+                    </div>
+
+                      </div>
+                    </div>
+
+
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<%= link_to 'Show', @product %> |
+<%= link_to 'Back', products_path %>

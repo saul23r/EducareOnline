@@ -1,0 +1,106 @@
+
+<%=render 'layouts/navbar' %>
+
+
+<% if @products.tipo == 0 %>
+
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1><%= @products.nombre %></h1>
+
+    </div>
+    <div class="panel-body">
+      <div class="col-xs-12 col-md-6 col-lg-3" align="center">
+      <p>
+
+
+        <%= image_tag(@products.imagen, :style => 'width:300px', :style => 'height:300px', :class => 'img-responsive' )%>
+      </p>
+    </div>
+      <div class="col-xs-12 col-md-6 col-lg-3">
+
+
+        <strong>Author libro:</strong>
+        <%= @products.author_libro %>
+      </p>
+
+      <p>
+        <strong>Editorial:</strong>
+        <%= @products.editorial.editorial_name %>
+      </p>
+
+      <p>
+        <strong>Descripcion:</strong>
+        <%= @products.descripcion %>
+      </p>
+
+      <p>
+        <strong>Precio:</strong>
+        <%= number_to_currency(@products.precio, precision: 2) %>
+      </p>
+
+
+    </div>
+
+    </div>
+    <div class="panel-footer">
+
+
+      <%= link_to 'Back', page_libro_url %>
+
+    </div>
+  </div>
+  </div >
+
+<%else %>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1><%= @products.nombre %></h1>
+
+        </div>
+            <div class="panel-body">
+              <div class="col-xs-12 col-md-6 col-lg-3" align="center">
+              <p>
+                <%= image_tag(@products.imagen, :style => 'width:300px', :style => 'height:300px', :class => 'img-responsive' )%>
+              </p>
+              </div>
+              <div class="col-xs-12 col-md-6 col-lg-3">
+                <p>
+                  <strong>Marca:</strong>
+                  <%= @products.marca.marca_name %>
+                </p>
+
+              <p>
+                <strong>Proveedor:</strong>
+                <%= @products.proveedor.nombre %>
+              </p>
+
+
+              <p>
+                <strong>Descripcion:</strong>
+                <%= @products.descripcion %>
+              </p>
+
+              <p>
+                <strong>Precio:</strong>
+                <%= number_to_currency(@products.precio, precision: 2) %>
+              </p>
+            </div>
+            </div>
+
+              <div class="panel-footer">
+
+
+                <%= link_to 'Back', page_dida_url %>
+
+              </div>
+      </div>
+    </div>
+
+
+
+
+
+<%end%>

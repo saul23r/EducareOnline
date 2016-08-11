@@ -1,0 +1,148 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" xmlns="http://www.w3.org/1999/html"></script>
+
+<script>
+  $(function() {
+    $('#libro').click(function() {
+      $( '.didactico').fadeOut( 1200 );
+      $('.libro').fadeIn(1200);
+      $('.resto').fadeIn(1200);
+      $('.name').fadeIn(1200);
+      $('.buton').fadeIn(1200);
+      $('.cdac').val('');
+      $('#tipo').val(0);
+      return false;
+    });
+
+    $('#didactico').click(function() {
+      $( '.libro' ).fadeOut( 1200 );
+      $('.didactico').fadeIn(1200);
+      $('.resto').fadeIn(1200);
+      $('.name').fadeIn(1200);
+      $('.buton').fadeIn(1200);
+      $('#tipo').val(1);
+      $('.cbok').val('');
+      return false;
+    });
+  });
+</script>
+
+<%= render "layouts/nav_admin" %>
+<p id="notice"><%= notice %></p>
+<div class="col-sm-3 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="row">
+    <div class="container">
+
+
+      <div class="row">
+        <div class="col-sm-9 col-sm-offset-1">
+          <div class="jumbotron">
+              <div class="row">
+                <div class="col-md-5 col-md-offset-3">
+
+                    <%= form_for(@product) do |f| %>
+                    <% if @product.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+                        <ul>
+                        <% @product.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+
+                      <div class="form-group">
+                        <%= f.hidden_field :id %>
+                      </div>
+                      <div class="panel panel-success">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Elige un tipo de Producto</h3>
+                        </div>
+                      </div>
+                    <div class="form-group" id="opciones" >
+                      <button type="button" class="btn btn-info" id="libro" ><span class="glyphicon glyphicon-book"></span>Libro</button>
+                      <button type="button" class="btn btn-info" id="didactico" >Didactico </button>
+                    </div>
+                  <div class="name" style="display: none;">
+
+                    <div class="form-group">
+                      <%= f.label :nombre %><br>
+                      <%= f.text_field :nombre, :class=>"form-control" %>
+                    </div>
+
+                  </div>
+
+
+                    <div class="libro" style="display:none;">
+                      <div class="form-group">
+
+                      <%= f.label :author_libro %><br>
+                      <%= f.text_field :author_libro, class:"form-control cbok" %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :editorial_id, "Editorial" %><br>
+                      <%= collection_select(:product,  :editorial_id, @editorials, :id , :editorial_name, {prompt: "Seleccione una editorial"  },{class: "selectpicker show-menu-arrow show-tick"})%>  </div>
+                    <div class="form-group">
+                      <%= f.label :genero_id, "Genero" %><br>
+                      <%= collection_select(:product, :genero_id, @generos, :id, :genero_name, {:prompt => 'Selecciona el genero' },{class: "selectpicker show-menu-arrow show-tick"}) %>
+
+                    </div>
+                    </div>
+
+
+                    <div class="didactico" style="display:none;">
+
+
+                      <div class="form-group">
+                      <%= f.label :marca_id, "Marca" %><br>
+                      <%= collection_select(:product, :marca_id, @marcas, :id, :marca_name, {:prompt => 'Selecciona la marca' }, {class: "selectpicker show-menu-arrow show-tick"}) %>
+
+
+
+                    </div>
+                    </div>
+                        <div class="resto" style="display: none;">
+
+
+
+                          <div class="form-group">
+
+                            <%= f.hidden_field :tipo, :id => "tipo" %>
+                          </div>
+
+                          <div class="form-group">
+                            <%= f.label :proveedor_id, "Proveedor" %><br>
+                            <%= collection_select(:product, :proveedor_id, @proveedors, :id, :nombre, {:prompt => 'Selecciona el proveedor' },{class: "selectpicker show-menu-arrow show-tick"}) %>
+                          </div>
+                          <div class="form-group">
+                            <%= f.label :imagen %><br>
+                            <%= f.text_field :imagen, class:"form-control" %>
+                          </div>
+                          <div class="form-group">
+                            <%= f.label :cantidad %><br>
+                            <%= f.number_field :cantidad, class:"form-control" %>
+                          </div>
+                          <div class="form-group">
+                            <%= f.label :descripcion %><br>
+                            <%= f.text_area :descripcion, class:"form-control", rows: 10, cols: 60  %>
+                          </div>
+                          <div class="form-group">
+                            <%= f.label :precio %><br>
+                            <%= f.text_field :precio ,  class:"form-control" %>
+                          </div>
+
+                        </div>
+                      <div class=" form-group buton" style="display: none;" >
+                      <%= f.submit 'Registrar Producto', :class=> "btn btn-success" %>
+                      </div>
+
+                  <% end %>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+
+          </div>
+           </div>
+    </div>

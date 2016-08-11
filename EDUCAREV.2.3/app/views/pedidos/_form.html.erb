@@ -1,0 +1,51 @@
+<%= form_for(@pedido) do |f| %>
+  <% if @pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pedido.errors.count, "error") %>
+        prohibited this pedido from being saved:</h2>
+      <ul>
+      <% @pedido.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :name, "Nombre" %><br>
+      <%= f.text_field :name, size: 40, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+     <%= f.label :address, "Dirección" %><br>
+     <%= f.text_area :address, rows: 3, cols: 40, :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :email, "Correo Electrónico" %><br>
+      <%= f.text_field :email, size: 40, :class => 'form-control'  %>
+   </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :pay_type, "Forma de Pago" %><br>
+      <%= f.select :pay_type, Pedido.pay_types.keys,
+                 prompt: 'Selecciona un metodo de Pago' %>
+    </div>
+  </div>
+
+    <div class="form-group">
+    <%= f.hidden_field :cart_id, :value => @cart.id %>
+    </div>
+
+
+  <div class="actions">
+    <%= f.submit 'Enviar Pedido', :class=> 'btn btn-warning' %>
+  </div>
+<% end %>

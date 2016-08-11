@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @pedido.name %>
+</p>
+
+<p>
+  <strong>Dirección:</strong>
+  <%= @pedido.address %>
+</p>
+
+<p>
+  <strong>Correo Electrónico:</strong>
+  <%= @pedido.email %>
+</p>
+
+<p>
+  <strong>Tipo de Pago:</strong>
+  <%= @pedido.pay_type %>
+</p>
+
+<%= link_to 'Edit', edit_pedido_path(@pedido) %> |
+<%= link_to 'Back', pedidos_path %> |
+
+
+<%= form_tag(detalle_pedido_index_path, :method => :get) do %>
+   <div hidden = "true">
+     <div class="form-group">
+        <%= text_field_tag :search, params[:search], :value => @pedido.id%>
+     </div>
+   </div>
+
+
+ <br>
+<button class="btn btn-sucess">Detalle de Pedido</button>
+
+<% end %>

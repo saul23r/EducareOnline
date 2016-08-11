@@ -1,0 +1,131 @@
+<%= render "layouts/nav_admin" %>
+<p id="notice"><%= notice %></p>
+<div class="col-sm-3 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="row">
+    <% if @product.tipo == 0 %>
+        <div class="container" >
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+
+
+                      <div class="form-group"><h2 align="left"><%= @product.nombre %></h2></div>
+
+                    </div>
+                    <div class="panel-body">
+                      <p>
+                        <strong>Imagen:</strong>
+                        <%= image_tag(@product.imagen, :style => 'width:300px', :style => 'height:300px', :class => 'img-responsive' )%>
+                      </p>
+
+                      <p>
+                        <strong>Author libro:</strong>
+                        <%= @product.author_libro %>
+                      </p>
+
+                      <p>
+                        <strong>Editorial:</strong>
+                        <%= @product.editorial.editorial_name %>
+                      </p>
+
+                      <p>
+                        <strong>Genero:</strong>
+                        <%= @product.genero.genero_name %>
+                      </p>
+
+                      <p>
+                        <strong>Cantidad:</strong>
+                        <%= @product.cantidad %>
+                      </p>
+
+                      <p>
+                        <strong>Proveedor:</strong>
+                        <%= @product.proveedor.nombre %>
+                      </p>
+
+
+                      <p>
+                        <strong>Descripcion:</strong>
+                        <%= @product.descripcion %>
+                      </p>
+
+                      <p>
+                        <strong>Precio:</strong>
+                        <%= @product.precio %>
+                      </p>
+                    </div>
+                    <div class="panel-footer">
+
+                      <%= link_to 'Edit', edit_product_path(@product) %> |
+                      <%= link_to 'Back', products_path %>
+
+
+                    </div>
+                  </div>
+
+          </div>
+
+                <% else %>
+        <div class="container" >
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+
+
+                     <div class="form-group"><h2 align="left"><%= @product.nombre %></h2></div>
+
+                    </div>
+                    <div class="panel-body">
+
+
+                      <p>
+                        <strong>Imagen:</strong>
+                        <%= image_tag(@product.imagen, :style => 'width:300px', :style => 'height:300px', :class => 'img-responsive' )%>
+                      </p>
+
+
+                      <p>
+                        <strong>Cantidad:</strong>
+                        <%= @product.cantidad %>
+                      </p>
+
+                      <p>
+                        <strong>Proveedor:</strong>
+                        <%= @product.proveedor.nombre %>
+                      </p>
+
+
+                      <p>
+                        <strong>Descripcion:</strong>
+                        <%= @product.descripcion %>
+                      </p>
+
+                      <p>
+                        <strong>Precio:</strong>
+                        <%= @product.precio %>
+                      </p>
+
+                      <p>
+                        <strong>Marca:</strong>
+                        <%= @product.marca.marca_name %>
+                      </p>
+
+
+                    </div>
+                    <div class="panel-footer">
+
+                      <%= link_to 'Edit', edit_product_path(@product) %> |
+                      <%= link_to 'Back', products_path %>
+
+
+                    </div>
+                  </div>
+
+
+
+                <% end %>
+
+
+      </div>
+
+</div>
+    </div>
+  </div>

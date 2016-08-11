@@ -1,0 +1,7 @@
+<% @detalle_pedido.each do |detalle_pedido| %>
+<tr>
+  <td><%= detalle_pedido.quantity %>&times;</td>
+  <td><%= detalle_pedido.product.nombre %></td>
+  <td class="item_price"><%= number_to_currency(detalle_pedido.total_price) %></td>
+</tr>
+<%end%>

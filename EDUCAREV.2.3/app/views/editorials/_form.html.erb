@@ -1,0 +1,116 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aplicacion Web</title>
+
+  <link rel="stylesheet" href="../Resources/css/bootstrap.min.css">
+
+</head>
+
+<body>
+<!--Barra de Navegacion-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= form_for(@editorial) do |f| %>
+      <form role="form" class="form-horizontal">
+        <div class="form-group">
+          <div class="alert alert-danger text-center" style="display:none;" id="error">
+            <strong>Adventencia: </strong>Debe completar todos los campos
+          </div>
+          <div class="alert alert-success text-center" style="display:none;" id="exito">
+            <strong>Felicidades: </strong>Su registro ha sido guardado
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :editorial_name, :class=>'control-label col-xs-4' %><br>
+          <%= f.text_field :editorial_name, :id=>"editorial", :onkeyup=>"validacion('editorial');", :class=>"form-control" ,:placeholder=>"Escriba su editorial" %>
+            <span class="help-block"></span>
+          </div>
+
+
+
+
+
+        <div class="form-group">
+          <label for="codigo" class="control-label col-xs-4"></label>
+          <div class="col-xs-5">
+            <button type="submit" class="btn btn-primary" onclick='verificar();'><span class="glyphicon glyphicon-lock"></span> Entrar</button>
+          </div>
+        </div>
+        </form>
+
+    </div>
+    </div>
+</div>
+<script type="text/javascript" src="jquery-1.11.2.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+
+<script type="text/javascript">
+  var v=true;
+  $("span.help-block").hide();
+
+  function verificar(){
+
+    var v1=0;
+    v1=validacion('codigo');
+
+    if (v1===false ) {
+      $("#exito").hide();
+      $("#error").show();
+    }else{
+      $("#error").hide();
+      $("#exito").show();
+    }
+    /*total=v1+v2+v3+v4+v5+v6;
+     if (v && total>=6) {
+     $("#error").hide();
+     $("#exito").show();
+     }else{
+     $("#exito").hide();
+     $("#error").show();
+     }
+
+
+     validacion('nombres');
+     validacion('dni');
+     validacion('email');
+     validacion('genderRadios');
+     validacion('carrera');
+     if (v) {
+     alert("los campos estan validados")
+     }
+     else{
+     alert("los campos no estan validados");
+     }*/
+
+  }
+
+  function validacion(campo){
+    var a=0;
+
+    if (campo==='editorial')
+    {
+      editorial = document.getElementById(campo).value;
+      if( editorial == null || editorial.length == 0 || /^\s+$/.test(editorial) ) {
+        $("#glypcn"+campo).remove();
+        $('#'+campo).parent().parent().attr("class", "form-group has-error has-feedback");
+        $('#'+campo).parent().children('span').text("Ingrese algo").show();
+        $('#'+campo).parent().append("<span id='glypcn"+campo+"' class='glyphicon glyphicon-remove form-control-feedback'></span>");
+        return false;
+
+      }
+
+    }
+
+
+
+  }
+</script>
+</body>
+</html>
+
+<% end %>
